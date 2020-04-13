@@ -4,8 +4,9 @@
 
 using namespace std;
 
-double operator*(vector<double> &u,vector<double> &v){
-    if(u.size()==v.size()){
+double operator*(vector<double> const & u,vector<double> const &v){
+    if(u.size()!=v.size()){
+        std::cout << "Error rozne wielkosci wektorow\n";
         return 0;
     }
     double Iloczyn = 0;

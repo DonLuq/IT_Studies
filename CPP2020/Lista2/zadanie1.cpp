@@ -4,11 +4,11 @@
 
 using namespace std;
 
-int smalest(vector<int> N){
-    int number = N[0];
-    if(N.empty()){ 
+int smalest(vector<int> & N){
+    if(N.size()==0){ 
        return INT_MIN;
     }
+    int number = N[0];
     for(int i=0; i<N.size();i++){
         if(N[i] <= number){
             number = N[i];
@@ -26,3 +26,5 @@ int main(){
 
     return 0;
 }
+
+//c++ zadanie1.cpp -std=c++0x

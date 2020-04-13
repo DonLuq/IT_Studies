@@ -20,27 +20,27 @@ int fibo2(int n){
 }
 
 int fibo3(int n){
+    if(n==0){return 1;}
+    if(n==1){return 1;}
     static bool RUN = true;
+    static vector<int> wektor(n+1);
     if(RUN){
-        static vector<int> wektor(n+1);
         RUN=false;
-        if(n==0){return 1;}
-        if(n==1){return 1;}
         wektor[0] = 1;
         wektor[1] = 1;
         for(int i = 0;i<wektor.size()-2;i++){
             wektor[i+2]=wektor[i]+wektor[i+1];
         }
 
-    return wektor[n];
     }
-    
+    return wektor[n];
 }
 
 
 int main(){
-    int n = 40;
+    int n = 30;
     double_t time;
+
 
     time = clock();
     cout << "Fib1 liczba dla n = "<<n<<" Wynosi: "<<fibo1(n)<<endl;
@@ -53,6 +53,8 @@ int main(){
     time = clock();
     cout << "Fib3 liczba dla n = "<<n<<" Wynosi: "<<fibo3(n)<<endl;
     cout << "Fib3 Czas wykonania : "<< (clock()-time)/CLOCKS_PER_SEC*1000<<"ms"<<endl;
+
+    cout <<fibo3(3) <<" "<<fibo3(7)<<"\n";
 
     return 0;
 }
