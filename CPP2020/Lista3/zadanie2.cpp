@@ -12,11 +12,11 @@ int main(){
 
     std::vector<void*> Wskaznik_na_Wektor; // standardowy vetor wskaznikow na void
 
-    std::vector<double> Tablica_D[4]; // czteroelementowy vector typu double
+    std::vector<double> Tablica_D[4]; // czteroelementowa tablica vectorow typu double
 
     double funkcjaB(double Tablica[] ,int liczba){return Tablica[];}
     double (*funkcjaB)(double*,int); // wskaznik na funkcja zwracajaca typ double i przyjmujaca tablice double oraz  liczbe int
 
     int * p;
-    void funkcjaB(int & p); // funkcja przyjmujaca przez referencje wskaznik na int
+    void (*funkcjaB)(int * & p); // funkcja przyjmujaca przez referencje wskaznik na int , nie rozumiem tego przykladu do konca.
 }
