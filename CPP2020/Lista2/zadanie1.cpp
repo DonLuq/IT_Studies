@@ -4,7 +4,7 @@
 
 using namespace std;
 
-int smallest(vector<int> & N){
+int smallest(vector<int> const & N){
     if(N.size()==0){ 
        return INT_MIN;
     }
