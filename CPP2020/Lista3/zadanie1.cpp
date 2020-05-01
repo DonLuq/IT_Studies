@@ -7,8 +7,9 @@ void kopiuj(char* dokad,const char* skad){
     //najwyzszy priorytet ma operator ikrementacji ++, a najnizszy operator przypisania =.
 
     //operator ++ zwraca wskaznik komorki pamieci, wskazujacy na o jedna dalej wartosc adresu niz wczesniej.
-    //operator * zwraca nam miejsce w pamieci dla objektu, jest to operator wyluskiwania.
-    //operator przypisania zwraca nowe przypisanie wskaznika dokad na skad
+    //Czyli np dla char bedzie wzkazywal na kolejna wartosc w tablicy.
+    //operator * zwraca nam bezposrednio obiekt odpowiadajacy adresowi z pamieci, jest to operator wyluskiwania.
+    //operator przypisania zwraca typ char* obiektu dokad na skad.
     
     //while bedzie wykonywany dopoki wartosc wyrazenia logicznego bedzie rozna od 0.
     
@@ -17,5 +18,5 @@ void kopiuj(char* dokad,const char* skad){
 int main(){
     char bufor[200];
     kopiuj(bufor,"Ala ma kota");
-    std::cout << "Tekst" << bufor << " ma dlugosc "<< std::strlen(bufor) << std::endl;
+    std::cout << "Tekst" << bufor << " ma dlugosc "<< strlen(bufor) << std::endl;
 }
