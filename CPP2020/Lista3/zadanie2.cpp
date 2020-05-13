@@ -18,5 +18,5 @@ int main(){
     double (*funkcjaB)(double*,int); // wskaznik na funkcja zwracajaca typ double i przyjmujaca tablice double oraz  liczbe int
 
     int * p;
-    void (*funkcjaB)(int* & p); // funkcja przyjmujaca przez referencje wskaznik na int , nie rozumiem tego przykladu do konca.
+    void funkcjaB(int* & p); // funkcja przyjmujaca przez referencje wskaznik na int , nie rozumiem tego przykladu do konca.
 }
