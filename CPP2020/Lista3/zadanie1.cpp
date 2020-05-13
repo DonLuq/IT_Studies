@@ -9,7 +9,7 @@ void kopiuj(char* dokad,const char* skad){
     //operator ++ zwraca wskaznik komorki pamieci, wskazujacy na o jedna dalej wartosc adresu niz wczesniej.
     //Czyli np dla char bedzie wzkazywal na kolejna wartosc w tablicy.
     //operator * zwraca nam bezposrednio obiekt odpowiadajacy adresowi z pamieci, jest to operator wyluskiwania.
-    //operator przypisania zwraca typ char* obiektu dokad na skad.
+    //operator przypisania zwraca referencje char* obiektu dokad na skad.
     
     //while bedzie wykonywany dopoki wartosc wyrazenia logicznego bedzie rozna od 0.
     
