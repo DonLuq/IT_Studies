@@ -1,31 +1,5 @@
 #include "stos.h"
-#include <cassert>
-
-inline Stos::Stos()
-    : _pSzczyt(0), _size(0)
-{
-}
-
-inline bool Stos::empty() const
-{
-    return _pSzczyt == 0;
-}
-
-inline void Stos::push(int n)
-{
-    _pSzczyt = new Ogniwo(n, _pSzczyt);
-    _size++;
-}
-
-inline void Stos::pop()
-{
-    assert(!empty());
-    Ogniwo *temp = _pSzczyt;
-    _pSzczyt = _pSzczyt->_nastepny_p;
-    delete temp;
-    _size--;
-}
-
+//ZADANIE 2
 Stos::~Stos()
 {
     while (!this->empty())
@@ -34,55 +8,25 @@ Stos::~Stos()
     }
 }
 
-inline int Stos::top() const
+Stos::Stos(Stos const& rhs)
+        :_pSzczyt(rhs._pSzczyt), _size(rhs._size)
 {
-    assert(!empty());
-    return _pSzczyt->_dane;
+    for (size_t i = 0; i < _size; i++)
+        _pSzczyt[i]._dane = rhs._pSzczyt[i]._dane;
 }
 
-inline int &Stos::top()
+Stos & Stos:: operator=(const Stos &rhs)
 {
-    assert(!empty());
-    return _pSzczyt->_dane;
-}
-//ZADANIE 2
-
-Stos::Stos(const Stos &A)
-    : _size(A._size)
-{
-    Ogniwo *temp_oryginal = A._pSzczyt;
-    Ogniwo *temp_kopia = _pSzczyt;
-    temp_kopia->_dane = temp_oryginal->_dane;
-
-    for (int i = _size - 1; i > 0; i--)
-    {
-        temp_kopia->_nastepny_p = new Ogniwo(0, NULL);
-        temp_kopia = temp_kopia->_nastepny_p;
-
-        temp_oryginal = temp_oryginal->_nastepny_p;
-
-        temp_kopia->_dane = temp_oryginal->_dane;
-    }
-}
-
-Stos &Stos::operator=(Stos const &A)
-{
-    if (this == &A)
-    {
+    if (this == &rhs)
         return *this;
-    }
-    delete [] this -> _pSzczyt;
-    this ->_size = A._size;
-
-    _pSzczyt = new Ogniwo(0,NULL);
-
-    Ogniwo* temp_oryginal = A._pSzczyt;
-    Ogniwo* temp_kopia = _pSzczyt;
-    temp_kopia -> _dane = temp_oryginal -> _dane;
-    for(int i = _size-1; i>0; i--)
+    if (_size < rhs._size)
     {
-        temp_oryginal = temp_oryginal ->_nastepny_p;
-        temp_kopia -> _nastepny_p = new Ogniwo(temp_oryginal->_dane,NULL);
+        delete _pSzczyt;
+        _size = rhs._size;
+        _pSzczyt = new Ogniwo(rhs._pSzczyt->_dane, rhs._pSzczyt);
     }
-    return *this; // dlaczego zwracamy wskaznik na typ Stos? a nie referencje?
+    _size = rhs._size;
+    for (size_t i = 0; i < _size; i++)
+        _pSzczyt[i]._dane = rhs._pSzczyt[i]._dane;
+    return *this;
 }
