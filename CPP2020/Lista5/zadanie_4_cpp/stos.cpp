@@ -31,15 +31,15 @@ Stos & Stos:: operator=(const Stos &rhs)
 
 void Stos::reverse()
 {
-    Ogniwo *next = _pSzczyt;
+    Ogniwo *tmp = _pSzczyt;
     Ogniwo *prev = NULL;
-    Ogniwo *tmp = NULL;
-    while(next != NULL)
+    Ogniwo *next = NULL;
+    while(tmp != NULL)
     {
-        tmp=next->_p_nastepny;
-        next->_p_nastepny=prev;
-        prev=next;
-        next=tmp;
+        next=tmp->_p_nastepny;
+        tmp->_p_nastepny=prev;
+        prev=tmp;
+        tmp=next;
     }
     _pSzczyt = prev;
 }
