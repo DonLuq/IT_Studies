@@ -18,40 +18,10 @@
 #include <SFML/Graphics.hpp>
 #include <string>
 #include <time.h>
-
+#include "player.hpp"
 // Here is a small helper for you! Have a look.
 #include "ResourcePath.hpp"
 
-class player: public sf::CircleShape{
-public:
-    float velocityX = NULL;
-    float velocityY = NULL;
-    int HP = NULL;
-    int MANA = NULL;
-    float acceleration = 1;
-    clock_t timeY;
-    
-//public:
-//    void move(float x, float y){
-//        if (x>0) {
-//
-//        }
-//        else if (y>0){
-//
-//        }
-//        else if (x<0){
-//
-//        }
-//        else if (y<0){
-//
-//        }
-//    };
-    
-//private:
-//    void SmothMove(float x, float y){
-//        this->velocity;
-//    }
-};
 
 int main(int, char const**)
 {
@@ -115,29 +85,22 @@ int main(int, char const**)
             
             if (event.type == sf::Event::KeyPressed && event.key.code ==
                 sf::Keyboard::Up) {
-                if (A.velocityY == 0){
-                    A.velocityY -= 2;
-                    A.timeY = clock();
-                }
+                A.moveUp();
             }
             
             if (event.type == sf::Event::KeyPressed && event.key.code ==
                 sf::Keyboard::Down) {
-                A.move(0,10);
+                A.moveDown();
             }
             
             if (event.type == sf::Event::KeyPressed && event.key.code ==
                 sf::Keyboard::Right) {
-                if (A.velocityX < 6){
-                    A.velocityX += A.acceleration;
-                }
+                A.moveRight();
             }
             
             if (event.type == sf::Event::KeyPressed && event.key.code ==
                 sf::Keyboard::Left) {
-                if (A.velocityX < 6){
-                    A.velocityX -= A.acceleration;
-                }
+                A.moveLeft();
             }
         }
 
@@ -153,23 +116,11 @@ int main(int, char const**)
         // Draw the element
         window.draw(A);
         
+        //player
+        A.checkStatus();
+
         // Update the window
         window.display();
-        
-        // Move
-        A.move(A.velocityX, A.velocityY);
-        if(A.velocityX <= 0){
-            A.velocityX += 0.05;
-        }
-        else if(A.velocityX > 0){
-            A.velocityX -= 0.05;
-        }
-        else if(A.velocityY < 0){
-            A.velocityY = 2 +9.81*0.001*(clock()-A.timeY);
-        }
-        else if(A.velocityY > 0){
-            A.velocityY = 0;
-        }
     }
 
     return EXIT_SUCCESS;
