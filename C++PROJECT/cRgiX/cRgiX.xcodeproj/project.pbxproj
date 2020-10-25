@@ -14,6 +14,7 @@
 		CE7419FC253DA721004D13CF /* sansation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CE7419FB253DA721004D13CF /* sansation.ttf */; };
 		CE7419FE253DA721004D13CF /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = CE7419FD253DA721004D13CF /* icon.png */; };
 		CE7F2E312544C9050041794D /* player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE7F2E2F2544C9050041794D /* player.cpp */; };
+		CE7F2E352544DAB60041794D /* window.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE7F2E332544DAB60041794D /* window.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,8 @@
 		CE7419FD253DA721004D13CF /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = ../icon.png; sourceTree = "<group>"; };
 		CE7F2E2F2544C9050041794D /* player.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = player.cpp; sourceTree = "<group>"; };
 		CE7F2E302544C9050041794D /* player.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = player.hpp; sourceTree = "<group>"; };
+		CE7F2E332544DAB60041794D /* window.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = window.cpp; sourceTree = "<group>"; };
+		CE7F2E342544DAB60041794D /* window.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = window.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +67,8 @@
 				CE7419F3253DA721004D13CF /* ResourcePath.hpp */,
 				CE7419F4253DA721004D13CF /* main.cpp */,
 				CE7F2E2F2544C9050041794D /* player.cpp */,
+				CE7F2E332544DAB60041794D /* window.cpp */,
+				CE7F2E342544DAB60041794D /* window.hpp */,
 				CE7F2E302544C9050041794D /* player.hpp */,
 				CE7419F6253DA721004D13CF /* Resources */,
 				CE7419EF253DA721004D13CF /* Supporting Files */,
@@ -185,6 +190,7 @@
 				CE7419F5253DA721004D13CF /* main.cpp in Sources */,
 				CE7419F2253DA721004D13CF /* ResourcePath.mm in Sources */,
 				CE7F2E312544C9050041794D /* player.cpp in Sources */,
+				CE7F2E352544DAB60041794D /* window.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

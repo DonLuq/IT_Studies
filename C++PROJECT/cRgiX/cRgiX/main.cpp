@@ -19,6 +19,7 @@
 #include <string>
 #include <time.h>
 #include "player.hpp"
+#include "window.hpp"
 // Here is a small helper for you! Have a look.
 #include "ResourcePath.hpp"
 
@@ -26,7 +27,8 @@
 int main(int, char const**)
 {
     // Create the main window
-    sf::RenderWindow window(sf::VideoMode(800, 600), "cRgiX");
+    window::RenderWindow window(sf::VideoMode(800,600), "cRgiX");
+//    sf::RenderWindow window(sf::VideoMode(800, 600), "cRgiX");
     window.setFramerateLimit(60);
     
     // Create player
@@ -48,7 +50,7 @@ int main(int, char const**)
         return EXIT_FAILURE;
     }
     sf::Sprite sprite(texture);
-
+    
     // Create a graphical text to display
     sf::Font font;
     if (!font.loadFromFile(resourcePath() + "sansation.ttf")) {
@@ -65,7 +67,14 @@ int main(int, char const**)
 
 //     Play the music
 //    music.play();
-
+    
+    
+    //TEST
+    sf::RectangleShape box;
+//    box = window::losujElementTekstury();
+    //TEST
+    
+    
     // Start the game loop
     while (window.isOpen())
     {
@@ -109,7 +118,7 @@ int main(int, char const**)
 
         // Draw the sprite
         window.draw(sprite);
-
+        
         // Draw the string
 //        window.draw(text);
 
@@ -118,6 +127,7 @@ int main(int, char const**)
         
         //player
         A.checkStatus();
+        
 
         // Update the window
         window.display();
