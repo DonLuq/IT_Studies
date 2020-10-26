@@ -22,19 +22,20 @@
 #include "window.hpp"
 // Here is a small helper for you! Have a look.
 #include "ResourcePath.hpp"
+#include <random>
 
 
 int main(int, char const**)
 {
     // Create the main window
-    window::RenderWindow window(sf::VideoMode(800,600), "cRgiX");
+    window window(sf::VideoMode(1200,700), "cRgiX");
 //    sf::RenderWindow window(sf::VideoMode(800, 600), "cRgiX");
     window.setFramerateLimit(60);
     
     // Create player
     player A;
     A.setPosition(100, 200);
-    A.setFillColor(sf::Color::Black);
+    A.setFillColor(sf::Color::White);
     A.setRadius(20);
     
     // Set the Icon
@@ -59,6 +60,7 @@ int main(int, char const**)
     sf::Text text("Hello SFML", font, 50);
     text.setFillColor(sf::Color::Black);
 
+    
 //     Load a music to play
 //    sf::Music music;
 //    if (!music.openFromFile(resourcePath() + "nice_music.ogg")) {
@@ -71,7 +73,13 @@ int main(int, char const**)
     
     //TEST
     sf::RectangleShape box;
-//    box = window::losujElementTekstury();
+    sf::RectangleShape box1;
+    sf::RectangleShape box2;
+    sf::RectangleShape box3;
+    box = window.losujElementTekstury();
+    box1 = window.losujElementTekstury();
+    box2 = window.losujElementTekstury();
+    box3 = window.losujElementTekstury();
     //TEST
     
     
@@ -125,9 +133,15 @@ int main(int, char const**)
         // Draw the element
         window.draw(A);
         
+        //TEST
+        window.draw(box);
+        window.draw(box1);
+        window.draw(box2);
+        window.draw(box3);
+        //TEST
+        
         //player
         A.checkStatus();
-        
 
         // Update the window
         window.display();

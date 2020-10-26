@@ -11,15 +11,19 @@
 #include <SFML/Audio.hpp>
 #include <SFML/Graphics.hpp>
 #include <stdio.h>
+#include <string>
 
 
 class window: public sf::RenderWindow{
 public:
-    float x;
-    float y;
+    float x = this->getPosition().x;
+    float y = this->getPosition().y;
     sf::RectangleShape box1; // zamienic na tablice w pozniejszym etapie
     sf::RectangleShape box2;
     sf::RectangleShape box3;
+    
+    window(sf::VideoMode x,std::string y):sf::RenderWindow(x,y)
+    {};
     
     /// Losowanie teskstur przeszkod
     sf::RectangleShape losujElementTekstury();

@@ -10,18 +10,25 @@
 #include <iostream>
 #include <string>
 #include "ResourcePath.hpp"
+#include <random>
 
 
-//sf::RectangleShape window::losujElementTekstury(){
-//    sf::Texture texture;
-//    if (!texture.loadFromFile(resourcePath() + "cute_image.jpg")) {
-//        return EXIT_FAILURE;
-//    };
-//
-//    sf::RectangleShape box;
-//    box.setPosition(200, 200);
-//    box.setSize(sf::Vector2f(100,60));
-//    box.setTexture(&texture);
-//
-//    return box;
-//};
+sf::RectangleShape window::losujElementTekstury(){
+    sf::Texture texture;
+    if (!texture.loadFromFile(resourcePath() + "cute_image.jpg")) {
+        throw EXIT_FAILURE;
+    };
+
+    
+//    std::random_device rd;
+//    std::mt19937 mt(rd());
+//    std::uniform_real_distribution<double> dist(1.0, 10.0);
+    
+    
+    sf::RectangleShape box;
+    box.setPosition(rand()%this->getSize().x, rand()%this->getSize().y);
+    box.setSize(sf::Vector2f(100,60));
+    box.setTexture(&texture);
+
+    return box;
+};
