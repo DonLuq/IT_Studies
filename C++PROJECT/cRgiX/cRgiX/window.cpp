@@ -9,13 +9,13 @@
 #include "window.hpp"
 #include <iostream>
 #include <string>
-#include "ResourcePath.hpp"
+// #include "ResourcePath.hpp"
 #include <random>
 
 
 sf::RectangleShape window::losujElementTekstury(){
     sf::Texture texture;
-    if (!texture.loadFromFile(resourcePath() + "cute_image.jpg")) {
+    if (!texture.loadFromFile("Trashes/cute_image.jpg")) {
         throw EXIT_FAILURE;
     };
 

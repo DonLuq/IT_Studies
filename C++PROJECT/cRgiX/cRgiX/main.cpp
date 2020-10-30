@@ -20,8 +20,7 @@
 #include <time.h>
 #include "player.hpp"
 #include "window.hpp"
-// Here is a small helper for you! Have a look.
-#include "ResourcePath.hpp"
+// #include "ResourcePath.hpp"
 #include <random>
 
 
@@ -40,21 +39,21 @@ int main(int, char const**)
     
     // Set the Icon
     sf::Image icon;
-    if (!icon.loadFromFile(resourcePath() + "icon.png")) {
+    if (!icon.loadFromFile("Trashes/icon.png")) {
         return EXIT_FAILURE;
     }
     window.setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
 
     // Load a sprite to display
     sf::Texture texture;
-    if (!texture.loadFromFile(resourcePath() + "cute_image.jpg")) {
+    if (!texture.loadFromFile("Trashes/cute_image.jpg")) {
         return EXIT_FAILURE;
     }
     sf::Sprite sprite(texture);
     
     // Create a graphical text to display
     sf::Font font;
-    if (!font.loadFromFile(resourcePath() + "sansation.ttf")) {
+    if (!font.loadFromFile("Trashes/sansation.ttf")) {
         return EXIT_FAILURE;
     }
     sf::Text text("Hello SFML", font, 50);
