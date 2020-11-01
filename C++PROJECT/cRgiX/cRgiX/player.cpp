@@ -16,10 +16,12 @@ void HelloWorld(){
     std::cout<< "HELLO WORLD!"<< std:: endl;
 };
 
-void player::moveRight(){
+void player::moveRight(int xRightBorder, int xLeftBorder){
     if (this->velocityX < 6){
         this->velocityX += this->acceleration;
     }
+    this->xRightBorder = xRightBorder;
+    this->xLeftBorder = xLeftBorder;
 };
 
 void player::moveLeft(){
@@ -40,8 +42,9 @@ void player::moveUp(){
     }
 };
 
-
+// Operacje dziejace sie w czasie + ify na wszystko odnosnie ruchu
 void player::checkStatus(){
+    //ruch x
     if(this->velocityX < 0){
         this->velocityX+= 0.05;
     }
@@ -49,13 +52,14 @@ void player::checkStatus(){
         this->velocityX -=0.05;
     }
     
+    //ruch y
     if(this->timeY != 0){
         float dt = (clock()-this->timeY)/(float)CLOCKS_PER_SEC; // dt SEC.
         std::cout << "CZAS : " << dt << std::endl;
         if(dt >= 2*abs(this->jumpVelocity)/9.81 or this->getPosition().y >= this->start_y+0.00001){
             this->setPosition(this->getPosition().x, this->start_y);
-            this->start_y = NULL;
-            this->timeY = NULL;
+            this->start_y = 0;
+            this->timeY = 0;
             this->velocityY = 0;
             std::cout<< "CZAS STOP!"<<std::endl;
         }
@@ -67,7 +71,20 @@ void player::checkStatus(){
         
     }
     
+    //wykonanie ruchu
     this->move(this->velocityX, this->velocityY);
+
+
+    //Blokada ruchu prawo-lewo
+    if(this->getPosition().x > this-> xRightBorder){
+        this->velocityX=0;
+        this->setPosition(this-> xRightBorder, this->getPosition().y);
+    }
+
+    if(this->getPosition().x < this-> xLeftBorder){
+        this->velocityX=0;
+        this->setPosition(this-> xLeftBorder, this->getPosition().y);
+    }
 };
 
 

@@ -69,19 +69,6 @@ int main(int, char const**)
 //     Play the music
 //    music.play();
     
-    
-    //TEST
-    sf::RectangleShape box;
-    sf::RectangleShape box1;
-    sf::RectangleShape box2;
-    sf::RectangleShape box3;
-    box = window.losujElementTekstury();
-    box1 = window.losujElementTekstury();
-    box2 = window.losujElementTekstury();
-    box3 = window.losujElementTekstury();
-    //TEST
-    
-    
     // Start the game loop
     while (window.isOpen())
     {
@@ -111,7 +98,7 @@ int main(int, char const**)
             
             if (event.type == sf::Event::KeyPressed && event.key.code ==
                 sf::Keyboard::Right) {
-                A.moveRight();
+                A.moveRight(window.getSize().x-100);
             }
             
             if (event.type == sf::Event::KeyPressed && event.key.code ==
@@ -132,16 +119,13 @@ int main(int, char const**)
         // Draw the element
         window.draw(A);
         
-        //TEST
-        window.draw(box);
-        window.draw(box1);
-        window.draw(box2);
-        window.draw(box3);
-        //TEST
+        window.rysujElemetyTekstury();
         
         //player
         A.checkStatus();
 
+        //window
+        window.checkStatus(A.getPosition().x,A.getPosition().y);
         // Update the window
         window.display();
     }
