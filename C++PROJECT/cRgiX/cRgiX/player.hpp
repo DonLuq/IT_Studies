@@ -25,7 +25,7 @@ class player: public sf::CircleShape{
 public:
     float velocityX = NULL;
     float velocityY = NULL;
-    float jumpVelocity = -2;
+    float jumpVelocity = -1;
     int HP = NULL;
     int MANA = NULL;
     float acceleration = 1;
