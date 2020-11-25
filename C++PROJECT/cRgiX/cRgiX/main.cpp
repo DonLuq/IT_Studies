@@ -31,35 +31,52 @@ int main(int, char const**)
 //    sf::RenderWindow window(sf::VideoMode(800, 600), "cRgiX");
     window.setFramerateLimit(60);
     
+    sf::Texture corgi;
+    if (!corgi.loadFromFile("Sources/corgi2.png")) {
+        return EXIT_FAILURE;
+    }
+
     // Create player
     player A;
     A.setPosition(100, 200);
-    A.setFillColor(sf::Color::White);
-    A.setRadius(20);
+    // A.setFillColor(sf::Color::White);
+    A.setRadius(50);
+    A.setTexture(&corgi);
     
     // Set the Icon
     sf::Image icon;
-    if (!icon.loadFromFile("Trashes/icon.png")) {
+    if (!icon.loadFromFile("Sources/icon.png")) {
         return EXIT_FAILURE;
     }
     window.setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
 
     // Load a sprite to display
     sf::Texture texture;
-    if (!texture.loadFromFile("Trashes/cute_image.jpg")) {
+    if (!texture.loadFromFile("Sources/background1.jpg")) {
         return EXIT_FAILURE;
     }
     sf::Sprite sprite(texture);
-    
+
+    sf::Texture picFloor;
+    if (!picFloor.loadFromFile("Sources/wood_texture.jpg")) {
+        return EXIT_FAILURE;
+    }
+    picFloor.setSmooth(true);
+
+    sf::RectangleShape floor;
+    floor.setSize(sf::Vector2f(1200,700));
+    floor.setPosition(0,window.getSize().y-100);
+    floor.setFillColor(sf::Color::White);
+    floor.setTexture(&picFloor);
+
     // Create a graphical text to display
     sf::Font font;
-    if (!font.loadFromFile("Trashes/sansation.ttf")) {
+    if (!font.loadFromFile("Sources/sansation.ttf")) {
         return EXIT_FAILURE;
     }
     sf::Text text("Hello SFML", font, 50);
     text.setFillColor(sf::Color::Black);
 
-    
 //     Load a music to play
 //    sf::Music music;
 //    if (!music.openFromFile(resourcePath() + "nice_music.ogg")) {
@@ -88,7 +105,8 @@ int main(int, char const**)
             
             if (event.type == sf::Event::KeyPressed && event.key.code ==
                 sf::Keyboard::Up) {
-                A.moveUp();
+                // A.moveUp();
+                A.move(0,-10);
             }
             
             if (event.type == sf::Event::KeyPressed && event.key.code ==
@@ -98,7 +116,10 @@ int main(int, char const**)
             
             if (event.type == sf::Event::KeyPressed && event.key.code ==
                 sf::Keyboard::Right) {
+                if (!window.czyZderzenie(A.getPosition().x, A.getPosition().y) == true)
+                {
                 A.moveRight(window.getSize().x-100);
+                }
             }
             
             if (event.type == sf::Event::KeyPressed && event.key.code ==
@@ -112,7 +133,8 @@ int main(int, char const**)
 
         // Draw the sprite
         window.draw(sprite);
-        
+        window.draw(floor);
+
         // Draw the string
 //        window.draw(text);
 
@@ -122,10 +144,15 @@ int main(int, char const**)
         window.rysujElemetyTekstury();
         
         //player
-        A.checkStatus();
+        A.checkStatus(window.czyZderzenie(A.getPosition().x,A.getPosition().y));
 
         //window
         window.checkStatus(A.getPosition().x,A.getPosition().y);
+        
+        if(window.czyZderzenie(A.getPosition().x,A.getPosition().y)){
+            std::cout << "ZDERZENIE!" << std::endl; // do tej funkcji pozycja obeiktu musi byc z uwzglednieniem rozmiaru bo kolo np ma x,y w centrum i on jest
+        }
+        std::cout<< A.getPosition().x << "\n";
         // Update the window
         window.display();
     }

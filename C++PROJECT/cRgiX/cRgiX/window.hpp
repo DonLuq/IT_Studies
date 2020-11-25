@@ -36,8 +36,11 @@ public:
 
     void rysujElemetyTekstury();
     
+
     /// Zbieranie i czyszczenie po pozostalych funkcjach np. gdy tekstury sa juz poza mapa
     void checkStatus(int x = -100, int y = -100);
+
+    bool czyZderzenie(float x,float y);
     
 private:
     void przesunElementTekstury();

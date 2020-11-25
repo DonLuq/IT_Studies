@@ -43,8 +43,13 @@ void player::moveUp(){
 };
 
 // Operacje dziejace sie w czasie + ify na wszystko odnosnie ruchu
-void player::checkStatus(){
+void player::checkStatus(bool czyZderzenie){
     //ruch x
+    if(czyZderzenie){
+        this->velocityX *= 0;
+        this->velocityY *= -0.5;
+    }
+
     if(this->velocityX < 0){
         this->velocityX+= 0.05;
     }
@@ -87,4 +92,7 @@ void player::checkStatus(){
     }
 };
 
+void player::stopX(){
+    this->velocityX=0;
+};
 
