@@ -40,8 +40,11 @@ public:
     void moveLeft();
     void moveUp();
     void moveDown();
+
+    void stopY(); // zerowanie predkosci i przyspieszen
+    void stopX();
     
-    void checkStatus();// checkStatus - funkcja domykajaca dzialanie wszystkich pozostalych, aktualnie posiada dzialanie wspierajace funkcje moveRight(), moveLeft() w postaci redukcji predkosci X
+    void checkStatus(bool czyZderzenie);// checkStatus - funkcja domykajaca dzialanie wszystkich pozostalych, aktualnie posiada dzialanie wspierajace funkcje moveRight(), moveLeft() w postaci redukcji predkosci X
 
 private:
 };
