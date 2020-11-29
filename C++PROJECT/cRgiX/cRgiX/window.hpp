@@ -12,26 +12,38 @@
 #include <SFML/Graphics.hpp>
 #include <stdio.h>
 #include <string>
+#include <array>
 
 
 class window: public sf::RenderWindow{
 public:
+    int howManyBoxes = 0;
     float x = this->getPosition().x;
     float y = this->getPosition().y;
-    sf::RectangleShape box1; // zamienic na tablice w pozniejszym etapie
-    sf::RectangleShape box2;
-    sf::RectangleShape box3;
+    std::array<sf::RectangleShape, 5> arrayOfBoxes;
     
-    window(sf::VideoMode x,std::string y):sf::RenderWindow(x,y)
-    {};
+    window(sf::VideoMode x,std::string y):sf::RenderWindow(x,y){
+        losujElementTekstury();
+        losujElementTekstury();
+        losujElementTekstury();
+        losujElementTekstury();
+        losujElementTekstury();
+    };
     
     /// Losowanie teskstur przeszkod
-    sf::RectangleShape losujElementTekstury();
+    void losujElementTekstury(int numberOfTable);
+    void losujElementTekstury();
+
+    void rysujElemetyTekstury();
     
+
     /// Zbieranie i czyszczenie po pozostalych funkcjach np. gdy tekstury sa juz poza mapa
-    void checkStatus();
+    void checkStatus(int x = -100, int y = -100);
+
+    bool czyZderzenie(float x,float y);
     
 private:
+    void przesunElementTekstury();
 };
 
 

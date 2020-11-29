@@ -23,24 +23,28 @@ void HelloWorld();
 
 class player: public sf::CircleShape{
 public:
-    float velocityX = NULL;
-    float velocityY = NULL;
+    float velocityX = 0;
+    float velocityY = 0;
     float jumpVelocity = -1;
-    int HP = NULL;
-    int MANA = NULL;
+    int HP = 0;
+    int MANA = 0;
     float acceleration = 1;
-    clock_t timeY = NULL;
+    clock_t timeY = 0;
     float start_y;
-    
+    int xRightBorder;
+    int xLeftBorder;
     
 
 
-    void moveRight();
+    void moveRight(int xRightBorder=0,int xLeftBorder=0);
     void moveLeft();
     void moveUp();
     void moveDown();
+
+    void stopY(); // zerowanie predkosci i przyspieszen
+    void stopX();
     
-    void checkStatus();// checkStatus - funkcja domykajaca dzialanie wszystkich pozostalych, aktualnie posiada dzialanie wspierajace funkcje moveRight(), moveLeft() w postaci redukcji predkosci X
+    void checkStatus(bool czyZderzenie);// checkStatus - funkcja domykajaca dzialanie wszystkich pozostalych, aktualnie posiada dzialanie wspierajace funkcje moveRight(), moveLeft() w postaci redukcji predkosci X
 
 private:
 };
