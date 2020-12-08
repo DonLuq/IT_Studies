@@ -1,0 +1,27 @@
+Łukasz Bajsarowicz:
+
+	*Projekt rozpoczety zostal od wykonania okna(planszy) dla gry za pomocą bibliotek SFML.
+	*Kolejno zostaly wprowadzone pierwowzory przeszkod zaimplementowane bezposrednio w klasie window dziedziczacej z obiektu SFML.
+	*Dzieki dzidziczeniu z biblioteki SFML zostala utworzona klasa player odpowiedzialna za dzialanie gracza w tym zostaly zaimplementowane wstepny ruch oraz funckje do komunikacji z klasa.
+	*Wprowadzenie progresywanego tworzenia obiektow wraz z ruchem gracza, animacja ruchu obiektow na planszy.
+
+
+Jakub Grzedowski:
+
+	*Wciaz trwaja prace nad uplynnieniem fizyki ruch gracza, kolizjiami z przeszkodami na planszy
+(w przyszlosci i z przeciwnikami) oraz mechaniki skoku, ktora ma zastapic ruch gora/dol gracza,
+niestety zmiany nie zostaly jeszcze wprowadzone do projektu.
+
+Co dalej:
+
+	*Nadanie na obiekty surowe tekstur i stworzenie oprawy graficznej.
+	*Odtwarzanie muzyki w tle oraz dzwiekow interakcji.
+	*Zmiana fizyki obiektu gracza (opoznione)
+	*fizyka zderzen
+	*stworzenie pierwowzoru losowo generowancyh przeciwnikow
+
+Czego sie nauczylismy
+
+	*Poszerzylismy nasza znajomosc funkcji wbudowanych dla bibliotek SFML.
+	*Zapoznalizmy sie z mozliwosciami wspolpracy przy projekcie grupowym na podstawie GitHuba
+

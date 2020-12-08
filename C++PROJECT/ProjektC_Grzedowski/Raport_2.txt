@@ -1,0 +1,20 @@
+Łukasz Bajsarowicz:
+
+	*Stworzenie mechanizmu losowania tekst (ktory nalezy dopracowac).
+
+Jakub Grzedowski:
+
+	*Wprowadzenie mechaniki skoku dla obiektu gracza,
+	*Rozpoczecie pracy nad nad kolizjami gracza z obiektami w grze.
+
+Co dalej:
+,
+	*Odtwarzanie muzyki w tle,
+	*Rozwoj mechaniki miedzy obiektami w grze,
+	*Stworzenie "Menu" dla uzytkownika,
+	*Rozwoj mechanizu losujacego.
+
+Czego sie nauczylismy:
+
+	*Poszerzylismy znajomosc implementacji zasad odzialwyania miedzy obiektowego
+z wykorzystaniem bibliotek SFML.
