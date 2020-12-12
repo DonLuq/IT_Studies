@@ -10,7 +10,7 @@ LDFLAGS = -lsfml-graphics -lsfml-window -lsfml-system
 # Makefile settings - Can be customized.
 APPNAME = cRgiX
 EXT = .cpp
-SRCDIR = /home/donluq/GIT/IT_Studies/C++PROJECT/cRgiX/cRgiX/
+SRCDIR = /home/kuba/Mytest/IT_Studies/C++PROJECT/cRgiX/cRgiX/
 OBJDIR = Objects
 
 ############## Do not change anything from here downwards! #############

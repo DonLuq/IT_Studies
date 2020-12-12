@@ -36,7 +36,7 @@ void player::moveDown(){
 
 void player::moveUp(){
     if (this->velocityY == 0){
-        this->velocityY -= this->jumpVelocity;
+        this->velocityY -= 5.25*this->jumpVelocity;
         this->timeY = clock();
         this->start_y = this->getPosition().y;
     }
@@ -47,21 +47,21 @@ void player::checkStatus(bool czyZderzenie){
     //ruch x
     if(czyZderzenie){
         this->velocityX *= 0;
-        this->velocityY *= -0.5;
+        this->velocityY *= -0.0005;
     }
 
-    if(this->velocityX < 0){
-        this->velocityX+= 0.05;
+    if(this->velocityX < 0 && this->velocityX > 1){
+        this->velocityX += 0.0000005;
     }
-    else if(this->velocityX > 0){
-        this->velocityX -=0.05;
+    else if(this->velocityX > 0 && this->velocityX < 1){
+        this->velocityX -=0.0000005;
     }
     
     //ruch y
     if(this->timeY != 0){
         float dt = (clock()-this->timeY)/(float)CLOCKS_PER_SEC; // dt SEC.
         std::cout << "CZAS : " << dt << std::endl;
-        if(dt >= 2*abs(this->jumpVelocity)/9.81 or this->getPosition().y >= this->start_y+0.00001){
+        if(dt >= 2*abs(this->jumpVelocity)/30.25 or this->getPosition().y >= this->start_y+0.00005){
             this->setPosition(this->getPosition().x, this->start_y);
             this->start_y = 0;
             this->timeY = 0;
@@ -69,7 +69,7 @@ void player::checkStatus(bool czyZderzenie){
             std::cout<< "CZAS STOP!"<<std::endl;
         }
         else{
-            this->velocityY = this->jumpVelocity + 9.81*dt;
+            this->velocityY = this->jumpVelocity + 30.25*dt;
             std::cout<< "VY = "<< this->velocityY <<std::endl;
         }
         std::cout << "Wysokosc : " << this->getPosition().y << std::endl;

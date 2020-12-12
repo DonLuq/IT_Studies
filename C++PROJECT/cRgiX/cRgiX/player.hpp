@@ -25,10 +25,10 @@ class player: public sf::CircleShape{
 public:
     float velocityX = 0;
     float velocityY = 0;
-    float jumpVelocity = -1;
+    float jumpVelocity = -3;
     int HP = 0;
     int MANA = 0;
-    float acceleration = 1;
+    float acceleration = 0.03;
     clock_t timeY = 0;
     float start_y;
     int xRightBorder;

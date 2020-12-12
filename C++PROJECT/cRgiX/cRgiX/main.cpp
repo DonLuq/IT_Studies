@@ -38,7 +38,7 @@ int main(int, char const**)
 
     // Create player
     player A;
-    A.setPosition(100, 200);
+    A.setPosition(100, 500);
     // A.setFillColor(sf::Color::White);
     A.setRadius(50);
     A.setTexture(&corgi);
@@ -104,15 +104,15 @@ int main(int, char const**)
             }
             
             if (event.type == sf::Event::KeyPressed && event.key.code ==
-                sf::Keyboard::Up) {
-                // A.moveUp();
-                A.move(0,-10);
+                sf::Keyboard::Space) {
+                A.moveUp();
+                // A.move(0,-10);
             }
             
-            if (event.type == sf::Event::KeyPressed && event.key.code ==
+            /*if (event.type == sf::Event::KeyPressed && event.key.code ==
                 sf::Keyboard::Down) {
                 A.moveDown();
-            }
+            }*/
             
             if (event.type == sf::Event::KeyPressed && event.key.code ==
                 sf::Keyboard::Right) {
