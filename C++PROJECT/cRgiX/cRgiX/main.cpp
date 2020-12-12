@@ -129,7 +129,7 @@ int main(int, char const**)
         }
 
         // Clear screen
-        window.clear();
+        // window.clear();
 
         // Draw the sprite
         window.draw(sprite);
@@ -149,10 +149,11 @@ int main(int, char const**)
         //window
         window.checkStatus(A.getPosition().x,A.getPosition().y);
         
-        if(window.czyZderzenie(A.getPosition().x,A.getPosition().y)){
-            std::cout << "ZDERZENIE!" << std::endl; // do tej funkcji pozycja obeiktu musi byc z uwzglednieniem rozmiaru bo kolo np ma x,y w centrum i on jest
-        }
-        std::cout<< A.getPosition().x << "\n";
+        // if(window.czyZderzenie(A.getPosition().x,A.getPosition().y)){
+        //     std::cout << "ZDERZENIE!" << std::endl; // do tej funkcji pozycja obeiktu musi byc z uwzglednieniem rozmiaru bo kolo np ma x,y w centrum i on jest
+        // }
+        // std::cout<< A.getPosition().x << "\n";
+
         // Update the window
         window.display();
     }

@@ -9,21 +9,28 @@
 #include "window.hpp"
 #include <iostream>
 #include <string>
-// #include "ResourcePath.hpp"
 #include <random>
 #include <algorithm>
 
 
 void window::losujElementTekstury(){
-    // sf::Texture texture;
-    // if (!texture.loadFromFile("Trashes/cute_image.jpg")) {
-    //     throw EXIT_FAILURE;
-    // };
     
     sf::RectangleShape box;
-    box.setPosition(rand()%this->getSize().x, rand()%this->getSize().y);
-    box.setSize(sf::Vector2f(100,50));
-    box.setFillColor(sf::Color::Magenta);
+    box.setPosition(rand()%this->getSize().x + 500, rand()%this->getSize().y- 100);
+    box.setSize(sf::Vector2f(rand()%100+100,rand()%50+20));
+    // box.setFillColor(sf::Color::Magenta);
+    sf::Texture klocek;
+    if (!klocek.loadFromFile("Sources/wood2.jpg")) 
+    {
+        std::cout<< "NIE Zaladowano!!! ZDJECIE!"<<std::endl;
+        box.setFillColor(sf::Color::Magenta);    
+    }
+    else
+    {
+        std::cout<< "Zaladowano!!! ZDJECIE!"<<std::endl;
+        box.setTexture(&klocek);
+        // box.setFillColor(sf::Color::Yellow);    
+    }
 
     arrayOfBoxes[howManyBoxes] = box;
     ++howManyBoxes;
@@ -33,15 +40,23 @@ void window::losujElementTekstury(){
 };
 
 void window::losujElementTekstury(int numberOfTable){
-    // sf::Texture texture;
-    // if (!texture.loadFromFile("Trashes/cute_image.jpg")) {
-    //     throw EXIT_FAILURE;
-    // };
-    
+
     sf::RectangleShape box;
-    box.setPosition(this->getSize().x, rand()%this->getSize().y);
+    box.setPosition(this->getSize().x + 500, rand()%this->getSize().y - 100);
     box.setSize(sf::Vector2f(100,60));
-    box.setFillColor(sf::Color::Magenta);
+    // box.setFillColor(sf::Color::Magenta);
+    sf::Texture klocek;
+    if (!klocek.loadFromFile("Sources/wood2.jpg")) 
+    {
+        std::cout<< "NIE Zaladowano!!! ZDJECIE!"<<std::endl;
+        box.setFillColor(sf::Color::Magenta);    
+    }
+    else
+    {
+        std::cout<< "Zaladowano!!! ZDJECIE!"<<std::endl;
+        box.setTexture(&klocek);
+        // box.setFillColor(sf::Color::Yellow);    
+    }
 
     arrayOfBoxes[numberOfTable] = box;
 };
@@ -59,26 +74,26 @@ void window::checkStatus(int x, int y){
         }
     }
 
-    if(x >= this->getSize().x-100){
+    if(x >= this->getSize().x-600){
         przesunElementTekstury();
     }
 };
 
 void window::przesunElementTekstury(){
     for(auto & eat:arrayOfBoxes){
-        eat.move(-1,0);
+        eat.move(-5,0);
     }
 }
 
 bool window::czyZderzenie(float x,float y){
     for(auto & table:arrayOfBoxes){
-        std::cout<< table.getPosition().x<<'\n';
-        sf::RectangleShape X;
-        X.setPosition(table.getPosition().x,table.getPosition().y);
-        X.setSize(table.getSize());
-        draw(X);
+        // std::cout<< table.getPosition().x<<'\n';
+        // sf::RectangleShape X;
+        // X.setPosition(table.getPosition().x,table.getPosition().y);
+        // X.setSize(table.getSize());
+        // draw(X);
         if(x >= table.getPosition().x && x <= table.getPosition().x + table.getSize().x && y >= table.getPosition().y && y <= table.getPosition().y + table.getSize().y ){
-            std::cout << table.getPosition().x<<" <---"<<"\n";
+            // std::cout << table.getPosition().x<<" <---"<<"\n";
             return true;
         }
     
