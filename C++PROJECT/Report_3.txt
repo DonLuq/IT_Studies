@@ -1,0 +1,21 @@
+Łukasz Bajsarowicz:
+
+	*Stworzenie podstawowego menu, wprowadzenie funkcjonalnosci konca gry i poczatku, systemu punktow
+
+Jakub Grzedowski:
+
+	*Wprowadzenie testowego ruchu
+  *animowanie postaci
+  *zrobienie kolizji i jej udoskonalenie(odbicie od lewego oboku obiektu)
+
+Co dalej:
+  * Przebudowa menu 
+	* Wprowadzenie poprawek do ruchu i kolizji,
+  * dodanie tekstur punktow i obiektow za nie przyznawanych
+  * mozliwosc pauzowania gry,
+  * wprowadzenie dodatkowych mechanik porszania do postaci
+
+Czego sie nauczylismy:
+
+	* Ze jezeli cos wydaje sie czesto uzytkowane i jest potrzebne to najlepiej pomyslec jakby to zrobic samemu, a nastepnie sprawdzic czy nie ma czegos takiego juz wbudowanego w biblioteke w dokumentacji :) ~LB
+  * Tworzenia bardziej skomplikowanych klas, posiadajacych rozbudowane konstruktory i oddzialywania ze swoimi instancjami.
