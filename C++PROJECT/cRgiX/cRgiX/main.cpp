@@ -1,4 +1,3 @@
-
 //
 // Disclaimer:
 // ----------
@@ -22,6 +21,10 @@
 #include "window.hpp"
 #include <random>
 
+bool START = false;
+bool FINISHED = false;
+bool ACTIVE = false;
+
 int main(int, char const **)
 {
     // Create the main window
@@ -41,7 +44,7 @@ int main(int, char const **)
     A.setPosition(100, 200);
     // A.setFillColor(sf::Color::White);
     A.setRadius(50);
-    A.setTexture(&corgi,true);
+    A.setTexture(&corgi, true);
 
     // Set the Icon
     sf::Image icon;
@@ -58,6 +61,10 @@ int main(int, char const **)
         return EXIT_FAILURE;
     }
     sf::Sprite sprite(texture);
+
+    sf::Sprite menuSprite;
+    menuSprite = sprite;
+    menuSprite.setColor(sf::Color(50, 50, 50, 50));
 
     sf::Texture picFloor;
     if (!picFloor.loadFromFile("Sources/wood_texture.jpg"))
@@ -95,73 +102,114 @@ int main(int, char const **)
     {
         // Process events
         sf::Event event;
-        while (window.pollEvent(event))
+        if (START == true and FINISHED == false)
         {
-            // Close window: exit
-            if (event.type == sf::Event::Closed)
+            while (window.pollEvent(event))
             {
-                window.close();
-            }
-
-            // Escape pressed: exit
-            if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape)
-            {
-                window.close();
-            }
-
-            if (event.type == sf::Event::KeyPressed && event.key.code ==
-                                                           sf::Keyboard::Up)
-            {
-                // A.moveUp();
-                A.move(0, -10);
-            }
-
-            if (event.type == sf::Event::KeyPressed && event.key.code ==
-                                                           sf::Keyboard::Down)
-            {
-                A.moveDown();
-            }
-
-            if (event.type == sf::Event::KeyPressed && event.key.code ==
-                                                           sf::Keyboard::Right)
-            {
-                if (!window.czyZderzenie(A.getPosition().x, A.getPosition().y) == true)
+                // Close window: exit
+                if (event.type == sf::Event::Closed)
                 {
-                    A.moveRight(window.getSize().x - 100);
+                    window.close();
+                }
+
+                // Escape pressed: exit
+                if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape)
+                {
+                    window.close();
+                }
+
+                if (event.type == sf::Event::KeyPressed && event.key.code ==
+                                                               sf::Keyboard::Up)
+                {
+                    // A.moveUp();
+                    A.move(0, -10);
+                }
+
+                if (event.type == sf::Event::KeyPressed && event.key.code ==
+                                                               sf::Keyboard::Down)
+                {
+                    A.moveDown();
+                }
+
+                if (event.type == sf::Event::KeyPressed && event.key.code ==
+                                                               sf::Keyboard::Right)
+                {
+                    if (!window.czyZderzenie(A.getPosition().x, A.getPosition().y) == true)
+                    {
+                        A.moveRight(window.getSize().x - 100);
+                    }
+                }
+
+                if (event.type == sf::Event::KeyPressed && event.key.code ==
+                                                               sf::Keyboard::Left)
+                {
+                    A.moveLeft();
+                }
+
+                if (event.type == sf::Event::LostFocus)
+                {
+                    START = false;
                 }
             }
 
-            if (event.type == sf::Event::KeyPressed && event.key.code ==
-                                                           sf::Keyboard::Left)
-            {
-                A.moveLeft();
-            }
+            // Clear screen
+            // window.clear();
+
+            // Draw the sprite
+            window.draw(sprite);
+            window.draw(floor);
+
+            // Draw the string
+            //        window.draw(text);
+
+            // Draw the element
+            window.draw(A);
+            window.rysujElemetyTekstury();
+
+            //player
+            A.checkStatus(window.czyZderzenie(A.getPosition().x, A.getPosition().y));
+
+            //window
+            window.checkStatus(A.getPosition().x, A.getPosition().y);
+
+            // if(window.czyZderzenie(A.getPosition().x,A.getPosition().y)){
+            //     std::cout << "ZDERZENIE!" << std::endl; // do tej funkcji pozycja obeiktu musi byc z uwzglednieniem rozmiaru bo kolo np ma x,y w centrum i on jest
+            // }
+            // std::cout<< A.getPosition().x << "\n";
         }
+        else
+        {
+            while (window.pollEvent(event))
+            {
+                // Close window: exit
+                if (event.type == sf::Event::Closed)
+                {
+                    window.close();
+                }
 
-        // Clear screen
-        // window.clear();
+                // Escape pressed: exit
+                if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape)
+                {
+                    window.close();
+                }
 
-        // Draw the sprite
-        window.draw(sprite);
-        window.draw(floor);
+                if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Enter)
+                {
+                    START = true;
+                }
 
-        // Draw the string
-        //        window.draw(text);
+                if (event.type == sf::Event::MouseButtonPressed && event.key.code == sf::Mouse::Left)
+                {
+                    std::cout << "KONIEC\n";
 
-        // Draw the element
-        window.draw(A);
-        window.rysujElemetyTekstury();
-
-        //player
-        A.checkStatus(window.czyZderzenie(A.getPosition().x, A.getPosition().y));
-
-        //window
-        window.checkStatus(A.getPosition().x, A.getPosition().y);
-
-        // if(window.czyZderzenie(A.getPosition().x,A.getPosition().y)){
-        //     std::cout << "ZDERZENIE!" << std::endl; // do tej funkcji pozycja obeiktu musi byc z uwzglednieniem rozmiaru bo kolo np ma x,y w centrum i on jest
-        // }
-        // std::cout<< A.getPosition().x << "\n";
+                    if (0)//funkcja do sprawdzania co klikniete!
+                    {
+                        START = true;
+                    }
+                }
+            }
+            window.draw(menuSprite);
+        }
 
         // Update the window
         window.display();
