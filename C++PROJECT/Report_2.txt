@@ -1,0 +1,26 @@
+Łukasz Bajsarowicz:
+
+	*Stworzenie mechanizmu losowania sturktur, udoskonalenie mechanizmu-> zachowane odstepy pomiedzy blokami rowne wielkosci blokow, stworzenie funkcji holderow pozwalajacych na opis kolizji,
+  wstepne wprowadzenie systemu losowania tekstur do blokow, wprowadzenie testowej mechaniki skoku i ruchu, wprowadzenie testowych grafik, wprowadzenie spritow ozdabiajacych, przerobienie projektu na molziwosc uruchamiania za pomocs
+  makefile, dodanie postepowego ruchu blokow, stowrzenie templatu klasy player.
+
+Jakub Grzedowski:
+
+	*Opracowywanie konceptu ruchu, jego rodzaju i efektu
+  *Rozpoczacie pracy nad generowaniem animacji
+	*Rozpoczecie pracy nad nad kolizjami gracza z obiektami w grze.
+
+Co dalej:
+,
+	*Odtwarzanie muzyki w tle,
+	*Rozwoj mechaniki miedzy obiektami w grze,
+	*Stworzenie "Menu" dla uzytkownika,
+	*Rozwoj mechanizmu losujacego.
+
+Czego sie nauczylismy:
+
+	*Poszerzylismy znajomosc implementacji zasad odzialwyania miedzy obiektowego
+z wykorzystaniem bibliotek SFML.
+~LB
+  *Roznice pomiedzy formatem *.png, a *.jpg -> apropo przezroczystosci obrazu
+  
