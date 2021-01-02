@@ -1,0 +1,14 @@
+Łukasz Bajsarowicz:
+	*Dopracowanie Menu,zmiany algorytmow rozlosowywujacych,  dodanie obszarow martwych dla ktorych grracz ginie, zmianna tekstur, stworzenie kolizji dla gracza i obiektow typu punkty, dodanie animacji do menu, zrealizowanie w calosci swojej czesci 	
+
+
+Jakub Grzedowski:
+	Praca nad ruchem dalej???
+
+Co dalej:
+
+	*Drobna kalibracja
+
+Czego sie nauczylismy:
+ 	
+	Projekt zostal zakonczony, zrealizowane zostaly zalozenia(LB). Drobne poprawki moga dodatkowo uprzyjemnic zogrywke, jest tez mozliwy dalszy rozwoj projektu w kierunku zwiekszenia mozliwosci gry.  
