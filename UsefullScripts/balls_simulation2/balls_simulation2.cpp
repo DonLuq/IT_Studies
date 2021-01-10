@@ -8,8 +8,8 @@
 #include <array>
 #include <cstdlib>
 
-//All balls have the same size and at the colision they would change their
-//move vectors without any more effect on them.
+//Balls change their move vectors randomly due to the time, if balls hit each other
+//then they are merged into one bigger ball.
 
 class Ball : public sf::CircleShape
 {
@@ -18,13 +18,15 @@ public:
     int Vy;
     int HEIGHT = 800;
     int WIDTH = 1200;
+    int randMoveInt = rand() % 500 + 50;
+    int randMoveAct = 0;
 
     Ball()
     {
         sf::CircleShape();
         this->setFillColor(sf::Color(rand() % 255, rand() % 255, rand() % 255));
         this->setPosition(rand() % 800 + 100, rand() % 300 + 100);
-        this->setRadius(2);
+        this->setRadius(1);
 
         Vy = rand() % 5 + 1;
         Vx = rand() % 5 + 1;
@@ -42,6 +44,8 @@ public:
 
     void moveBall()
     {
+        this->randMoveAct += 1;
+
         if (this->getPosition().x < 0 || this->getPosition().x + this->getGlobalBounds().width > WIDTH)
         {
             Vx *= -1;
@@ -51,7 +55,29 @@ public:
             Vy *= -1;
         }
 
+        if (randMoveInt == randMoveAct)
+        {
+            randMoveAct = 0;
+            changeTrajectory();
+        }
+
         this->move(Vx, Vy);
+    }
+
+    void changeTrajectory()
+    {
+        Vy = rand() % 5 + 1;
+        Vx = rand() % 5 + 1;
+
+        if (rand() % 2 == 0)
+        {
+            Vy *= -1;
+        }
+
+        if (rand() % 2 == 0)
+        {
+            Vx *= -1;
+        }
     }
 };
 
@@ -59,19 +85,43 @@ void boom(Ball &ball_1, Ball &ball_2)
 {
     if (ball_1.getRadius() >= ball_2.getRadius())
     {
-        ball_1.Vx *= -1;
-        ball_2.Vx *= -1;
-        ball_1.Vy *= -1;
-        ball_2.Vy *= -1;
-        std::cout << "BOOM !\n";
-    }
+        ball_1.setRadius(ball_1.getRadius() + ball_2.getRadius());
+        ball_2.setRadius(0);
 
+        ball_1.Vx = (ball_1.Vx + ball_1.Vx) / 2;
+        ball_2.Vx = 0;
+        ball_1.Vy = (ball_1.Vy + ball_1.Vy) / 2;
+        ball_2.Vy = 0;
+
+        // ball_1.setPosition((ball_1.getPosition().x + ball_2.getPosition().x) / 2, (ball_1.getPosition().y + ball_2.getPosition().y) / 2);
+        ball_2.setPosition(1, 1);
+        std::cout << "BOOM 1\n";
+    }
+    else
+    {
+        Ball temp = ball_1;
+        ball_1 = ball_2;
+        ball_2 = temp;
+
+        ball_1.setRadius(ball_1.getRadius() + ball_2.getRadius());
+        ball_2.setRadius(0);
+
+        ball_1.Vx = (ball_1.Vx + ball_1.Vx) / 2;
+        ball_2.Vx = 0;
+        ball_1.Vy = (ball_1.Vx + ball_1.Vx) / 2;
+        ball_2.Vy = 0;
+
+        // ball_1.setPosition((ball_1.getPosition().x + ball_2.getPosition().x) / 2, (ball_1.getPosition().y + ball_2.getPosition().y) / 2);
+        ball_2.setPosition(1, 1);
+        std::cout << "BOOM 2\n";
+    }
 }
 
 bool inter(Ball ONE, Ball TWO)
 {
     if (ONE.getGlobalBounds().intersects(TWO.getGlobalBounds()))
     {
+        // std::cout<<"Nachodzi! \n";
         return true;
     }
     else
@@ -83,7 +133,7 @@ bool inter(Ball ONE, Ball TWO)
 int main(int, char const **)
 {
     srand(time(NULL));
-    std::array<Ball, 20> arrayOfBalls;
+    std::array<Ball, 40> arrayOfBalls;
     sf::RenderWindow window(sf::VideoMode(1200, 800), "BALLS");
     window.setFramerateLimit(60);
 
