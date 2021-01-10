@@ -15,7 +15,7 @@ float P(float x, std::vector<float> dataX, std::vector<float> dataY)
     {
         float Iloczynup = 1;
         float Iloczyndown = 1;
-        for (int i = 0; i < dataX.size() - 1; i++)
+        for (int i = 0; i < dataX.size(); i++)
         {
             if (i == j)
             {
@@ -26,7 +26,7 @@ float P(float x, std::vector<float> dataX, std::vector<float> dataY)
                 Iloczynup *= x - dataX[i];
             }
         }
-        for (int i = 0; i < dataX.size() - 1; i++)
+        for (int i = 0; i < dataX.size(); i++)
         {
             if (i == j)
             {
